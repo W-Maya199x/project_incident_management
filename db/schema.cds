@@ -10,7 +10,8 @@ entity incident : cuid, managed {
     name : String;
     description : String;
     incidentnumber : Int16;
-    type : String;;
+    type : String;
+    tgest : String;
 }
 
 
