@@ -2,118 +2,118 @@ using IncidentService as service from '../../srv/IncidentService';
 
 annotate service.Incidents with @(
 
-    UI.HeaderInfo : {
+    UI.HeaderInfo                    : {
 
-        TypeName : 'Incident',
+        TypeName      : 'Incident',
 
-        TypeNamePlural : 'Incidents',
+        TypeNamePlural: 'Incidents',
 
-        Title : {
+        Title         : {
 
-            Value : name,
+        Value: name,
 
         },
 
-        Description : {
+        Description   : {
 
-            Value : incidentnumber,
+        Value: incidentnumber,
 
         },
 
     },
 
-    UI.FieldGroup #GeneratedGroup : {
+    UI.FieldGroup #GeneratedGroup    : {
 
-        $Type : 'UI.FieldGroupType',
+        $Type: 'UI.FieldGroupType',
 
         Data : [
 
             {
 
-                $Type : 'UI.DataField',
+                $Type: 'UI.DataField',
 
-                Label : 'Name',
+                Label: 'Name',
 
-                Value : name,
-
-            },
-
-            {
-
-                $Type : 'UI.DataField',
-
-                Label : 'Description',
-
-                Value : description,
+                Value: name,
 
             },
 
             {
 
-                $Type : 'UI.DataField',
+                $Type: 'UI.DataField',
 
-                Label : 'Incident Number',
+                Label: 'Description',
 
-                Value : incidentnumber,
-
-            },
-
-            {
-
-                $Type : 'UI.DataField',
-
-                Label : 'Type',
-
-                Value : type,
+                Value: description,
 
             },
 
             {
 
-                $Type : 'UI.DataField',
+                $Type: 'UI.DataField',
 
-                Label : 'Status',
+                Label: 'Incident Number',
 
-                Value : status_code,
+                Value: incidentnumber,
 
-                Criticality : (case
+            },
 
-                    when status.code = 'CLOSED'
+            {
 
-                        then 3
+                $Type: 'UI.DataField',
 
-                    when status.code = 'IN PROGRESS'
+                Label: 'Type',
 
-                        then 2
+                Value: type,
 
-                    when status.code = 'NEW'
+            },
 
-                        then 1
+            {
 
-                end),
+                $Type      : 'UI.DataField',
+
+                Label      : 'Status',
+
+                Value      : status_code,
+
+                Criticality: (case
+
+                                  when status.code = 'CLOSED'
+
+                                       then 3
+
+                                  when status.code = 'IN PROGRESS'
+
+                                       then 2
+
+                                  when status.code = 'NEW'
+
+                                       then 1
+
+                              end),
 
             },
             {
-                $Type : 'UI.DataField',
-                Value : ID,
-                Label : 'ID',
+                $Type: 'UI.DataField',
+                Value: ID,
+                Label: 'ID',
             },
 
         ],
 
     },
 
-    UI.Facets : [
+    UI.Facets                        : [
 
         {
 
             $Type : 'UI.ReferenceFacet',
 
-            ID : 'GeneratedFacet1',
+            ID    : 'GeneratedFacet1',
 
             Label : 'General Information',
 
-            Target : '@UI.FieldGroup#GeneratedGroup',
+            Target: '@UI.FieldGroup#GeneratedGroup',
 
         },
 
@@ -123,127 +123,139 @@ annotate service.Incidents with @(
 
             Label : 'Managed Information',
 
-            ID : 'ManagedInformation',
+            ID    : 'ManagedInformation',
 
-            Target : '@UI.FieldGroup#ManagedInformation',
+            Target: '@UI.FieldGroup#ManagedInformation',
+
+        },
+
+        // {
+
+        //     $Type : 'UI.ReferenceFacet',
+
+        //     ID    : 'ChangeHistory',
+
+        //     Label : 'Change History',
+
+        //     Target: 'changes/@UI.PresentationVariant',
+
+        // },
+
+    ],
+
+    UI.LineItem                      : [
+
+        {
+
+            $Type: 'UI.DataField',
+
+            Label: 'Incident Number',
+
+            Value: incidentnumber,
+
+        },
+
+        {
+
+            $Type: 'UI.DataField',
+
+            Label: 'Name',
+
+            Value: name,
+
+        },
+
+        {
+
+            $Type: 'UI.DataField',
+
+            Label: 'Description',
+
+            Value: description,
+
+        },
+
+        {
+
+            $Type: 'UI.DataField',
+
+            Label: 'Type',
+
+            Value: type,
+
+        },
+
+        {
+
+            $Type      : 'UI.DataField',
+
+            Label      : 'Status',
+
+            Value      : status_code,
+
+            Criticality: (case
+
+                              when status.code = 'CLOSED'
+
+                                   then 3
+
+                              when status.code = 'IN PROGRESS'
+
+                                   then 2
+
+                              when status.code = 'NEW'
+
+                                   then 1
+
+                          end),
 
         },
 
     ],
 
-    UI.LineItem : [
+    UI.FieldGroup #ManagedInformation: {
 
-        {
-
-            $Type : 'UI.DataField',
-
-            Label : 'Incident Number',
-
-            Value : incidentnumber,
-
-        },
-
-        {
-
-            $Type : 'UI.DataField',
-
-            Label : 'Name',
-
-            Value : name,
-
-        },
-
-        {
-
-            $Type : 'UI.DataField',
-
-            Label : 'Description',
-
-            Value : description,
-
-        },
-
-        {
-
-            $Type : 'UI.DataField',
-
-            Label : 'Type',
-
-            Value : type,
-
-        },
-
-        {
-
-            $Type : 'UI.DataField',
-
-            Label : 'Status',
-
-            Value : status_code,
-
-            Criticality : (case
-
-                when status.code = 'CLOSED'
-
-                    then 3
-
-                when status.code = 'IN PROGRESS'
-
-                    then 2
-
-                when status.code = 'NEW'
-
-                    then 1
-
-            end),
-
-        },
-
-    ],
-
-    UI.FieldGroup #ManagedInformation : {
-
-        $Type : 'UI.FieldGroupType',
+        $Type: 'UI.FieldGroupType',
 
         Data : [
 
             {
 
-                $Type : 'UI.DataField',
+                $Type: 'UI.DataField',
 
-                Label : 'Created On',
+                Label: 'Created On',
 
-                Value : createdAt,
-
-            },
-
-            {
-
-                $Type : 'UI.DataField',
-
-                Label : 'Created By',
-
-                Value : createdBy,
+                Value: createdAt,
 
             },
 
             {
 
-                $Type : 'UI.DataField',
+                $Type: 'UI.DataField',
 
-                Label : 'Changed On',
+                Label: 'Created By',
 
-                Value : modifiedAt,
+                Value: createdBy,
 
             },
 
             {
 
-                $Type : 'UI.DataField',
+                $Type: 'UI.DataField',
 
-                Label : 'Changed By',
+                Label: 'Changed On',
 
-                Value : modifiedBy,
+                Value: modifiedAt,
+
+            },
+
+            {
+
+                $Type: 'UI.DataField',
+
+                Label: 'Changed By',
+
+                Value: modifiedBy,
 
             },
 
@@ -255,29 +267,29 @@ annotate service.Incidents with @(
 
 annotate service.Incidents with {
 
-    status @Common.ValueList : {
+    status @Common.ValueList: {
 
-        $Type : 'Common.ValueListType',
+        $Type         : 'Common.ValueListType',
 
-        CollectionPath : 'IncidentStatuses',
+        CollectionPath: 'IncidentStatuses',
 
-        Parameters : [
+        Parameters    : [
 
             {
 
-                $Type : 'Common.ValueListParameterInOut',
+                $Type            : 'Common.ValueListParameterInOut',
 
-                LocalDataProperty : status_code,
+                LocalDataProperty: status_code,
 
-                ValueListProperty : 'code',
+                ValueListProperty: 'code',
 
             },
 
             {
 
-                $Type : 'Common.ValueListParameterDisplayOnly',
+                $Type            : 'Common.ValueListParameterDisplayOnly',
 
-                ValueListProperty : 'description',
+                ValueListProperty: 'description',
 
             },
 
