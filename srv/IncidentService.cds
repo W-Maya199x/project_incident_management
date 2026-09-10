@@ -9,11 +9,12 @@ service IncidentService {
     entity Incidents
         as projection on db.Incident;
 
-    @readonly
+    // @readonly
     entity IncidentStatuses
         as projection on db.IncidentStatus;
 
-            @readonly
-    entity Incident_Statuses
-        as projection on db.Incident_status;
+    //         @readonly
+    // entity Incident_Statuses
+    //     // as projection on db.Incident_status;
+    //         as projection on db.IncidentStatus;
 }
